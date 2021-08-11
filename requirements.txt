@@ -1,0 +1,5 @@
+#libraries for reclassification
+pandas>=1.2.4
+numpy>=1.21.1
+python-dateutil>=2.7.0
+datetime>=4.3
