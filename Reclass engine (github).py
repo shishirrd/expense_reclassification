@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# This reclassification engine is a powerful tool to classify transactions into their actual categories. I have stress tested this for over a million lines, without exception. Before you start processing this file, please ensure you have Pandas (pip install pandas) & Numpy (pip install numpy) libraries installed:
+# This reclassification engine is a powerful tool to classify transactions into their actual categories. I have stress tested this for over a million lines, without exception. Before you start processing this file, please ensure you have Pandas (pip install pandas), Datetime (pip install datetime) & Numpy (pip install numpy) libraries installed:
 # 
 # Please ensure you exactly specify field/column names that you select for reclassifying in code line 5 .
 # 
@@ -11,6 +11,7 @@
 
 
 #Import required libraries
+import os
 import pandas as pd
 import numpy as np
 from datetime import *
@@ -29,15 +30,22 @@ extension = ".csv"
 # In[ ]:
 
 
-#Please specify prior to every run
+#Please specify csv filepaths prior to every run
 input_file = 
 
 
 # In[ ]:
 
 
+base=os.path.basename(input_file)
+input_path = os.path.splitext(base)[0]+" "
+
+
+# In[ ]:
+
+
 #Auto derived based on input file name and filepath
-output_file = input_file + (current_date_and_time_string) + extension
+output_file = input_path + (current_date_and_time_string) + extension
 
 
 # In[ ]:
@@ -159,7 +167,6 @@ df['category'] = np.where(df[field3].str.contains('1 y|2 y|3 y|4 y|maint|support
 
 #Open CSV file in EXCEL
 #Local path in dir
-import os
 from pathlib import Path
 absolutePath = Path(output_file).resolve()
 os.system(f'start excel.exe "{absolutePath}"')
